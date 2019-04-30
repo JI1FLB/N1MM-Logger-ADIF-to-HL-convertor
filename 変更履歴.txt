@@ -1,0 +1,5 @@
+変更履歴
+
+1.0	初版
+N1MM Logger+のADIFファイルから簡単にTurboHAMログのインポート用ファイルを作成するものである。
+基はN1MM-Logger-ADIF-file-to-JARL-Contest-log-convertorからハムログへのインポートに必要なコードを利用して作成した。
