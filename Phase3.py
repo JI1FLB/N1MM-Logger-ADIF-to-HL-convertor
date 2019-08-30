@@ -69,8 +69,10 @@ def phase3( call:str , Contest_name:str ):
     TIME_ON = ""
     FREQ = ""
     MODE = ""
+    SUBMODE =""
     RST_SENT = ""
     RST_RCVD = ""
+    GRIDSQUARE = ""
     APP_N1MM_EXCHANGE1 = ""
     My_multi = ""
     APP_N1MM_POINTS = ""
@@ -423,6 +425,14 @@ def phase3( call:str , Contest_name:str ):
                     MODE = a[6+b2:7+b2+int(b1)]
                     MODE = MODE.rstrip()
 
+            if "SUBMODE:" in i:
+                a = i
+                b = a[8:10]
+                b1= b.rstrip(">")
+                b2 = len(b1)
+                SUBMODE = a[9+b2:11+b2+int(b1)]
+                SUBMODE = SUBMODE.rstrip()          
+
             if "RST_RCVD:" in i:
                 a = i
                 b = a[9:11]
@@ -454,6 +464,14 @@ def phase3( call:str , Contest_name:str ):
                 b2 = len(b1)
                 OPERATOR = a[10+b2:11+b2+int(b1)]
                 OPERATOR = OPERATOR.rstrip()
+
+            if "GRIDSQUARE:" in i:
+                a = i
+                b = a[11:13]
+                b1= b.rstrip(">")
+                b2 = len(b1)
+                GRIDSQUARE = a[12+b2:13+b2+int(b1)]
+                GRIDSQUARE = GRIDSQUARE.rstrip()
 
             if "CQZ:" in i:
                 a = i
@@ -585,7 +603,7 @@ def phase3( call:str , Contest_name:str ):
     #
     #
 
-        HL_line = '"'+CALL+'"'+","+'"'+QSO_DATE_HL+'"'+","+'"'+TIME_ON_HL+'"'+","+'"'+RST_SENT+'"'+","+'"'+RST_RCVD+'"'+","+'"'+str('{:.3f}'.format(float(FREQ)))+'"'+","+'"'+MODE+'"'+","+'""'+","+'""'+","+'"J"'+","+'""'+","+'""'+","+'"'+Remarks1+'"'+","+'"'+FREQ+"MHz"+'"'+","+'"'+"0"+'"'+"\n"
+        HL_line = '"'+CALL+'"'+","+'"'+QSO_DATE_HL+'"'+","+'"'+TIME_ON_HL+'"'+","+'"'+RST_SENT+'"'+","+'"'+RST_RCVD+'"'+","+'"'+str('{:.3f}'.format(float(FREQ)))+'"'+","+'"'+MODE+'"'+","+'""'+","+'"'+GRIDSQUARE+'"'+","+'"J"'+","+'""'+","+'""'+","+'"'+Remarks1+'"'+","+'"'+FREQ+"MHz"+'"'+","+'"'+"0"+'"'+"\n"
                 
         ham_log.write( HL_line )
 
