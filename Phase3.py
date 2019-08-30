@@ -414,13 +414,14 @@ def phase3( call:str , Contest_name:str ):
                 FREQ_RX = a[9+b2:10+b2+int(b1)]
                 FREQ_RX = FREQ_RX.rstrip()
                 
-            if "MODE:" in i:
-                a = i
-                b = a[5:7]
-                b1= b.rstrip(">")
-                b2 = len(b1)
-                MODE = a[6+b2:7+b2+int(b1)]
-                MODE = MODE.rstrip()
+            if "SUBMODE:" not in i:
+                if "MODE:" in i:
+                    a = i
+                    b = a[5:7]
+                    b1= b.rstrip(">")
+                    b2 = len(b1)
+                    MODE = a[6+b2:7+b2+int(b1)]
+                    MODE = MODE.rstrip()
 
             if "RST_RCVD:" in i:
                 a = i
